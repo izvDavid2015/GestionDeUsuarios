@@ -1,0 +1,17 @@
+create database gestion default character set utf8 collate utf8_unicode_ci;
+
+grant all on gestion.* to gestor@localhost identified by 'clavegestor';
+
+flush privileges;
+
+use gestion;
+
+create table usuario(
+  email varchar(60) not null primary key,
+  clave varchar(40) not null,
+  alias varchar(40) not null unique,
+  fechaAlta date not null,
+  activo tinyint(1) not null default 0,
+  administrador tinyint(1) not null default 0,
+  personal tinyint(1) not null default 0
+);
